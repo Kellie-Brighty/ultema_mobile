@@ -11,7 +11,7 @@ import React from "react";
 import GetStartedImg from "../assets/get_started.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const GetStarted = () => {
+const GetStarted = ({ navigation }) => {
   const mainColor = "#01532E";
 
   return (
@@ -54,11 +54,14 @@ const GetStarted = () => {
               width: 348,
               height: 48,
               borderRadius: 10,
-              justifyContent: 'center',
-              alignItems: 'center'
+              justifyContent: "center",
+              alignItems: "center",
             }}
+            onPress={() => navigation.navigate("Login")}
           >
-            <Text style={{fontSize: 16, color: "#fff", fontWeight: '400'}} >Get Started</Text>
+            <Text style={{ fontSize: 16, color: "#fff", fontWeight: "400" }}>
+              Get Started
+            </Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -76,6 +79,6 @@ const styles = StyleSheet.create({
   },
   image: {
     marginBottom: 16,
-    width: Dimensions.get("window").width - 30
+    width: Dimensions.get("window").width - 30,
   },
 });

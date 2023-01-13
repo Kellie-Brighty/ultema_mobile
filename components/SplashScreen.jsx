@@ -6,13 +6,16 @@ import {
   Text,
   View,
 } from "react-native";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import Logo from "../assets/ultema_logo.png";
+import Logo from "../assets/white_logo_icon.png";
 import GetStarted from "./GetStarted";
+import { GlobalContext } from "../store/context";
+import Login from "../screens/Login";
 
-const SplashScreen = () => {
+const SplashScreen = ({ navigation }) => {
+  const { registered } = useContext(GlobalContext);
   //SafeArea Values...
   const edges = useSafeAreaInsets();
 
@@ -77,7 +80,7 @@ const SplashScreen = () => {
           useNativeDriver: true,
         }),
       ]).start();
-    }, 500);
+    }, 1500);
   }, []);
 
   //Going to move up like navbar...
@@ -131,7 +134,11 @@ const SplashScreen = () => {
           { transform: [{ translateY: contentTransition }] },
         ]}
       >
-        <GetStarted />
+        {registered ? (
+          <Login navigation={navigation} />
+        ) : (
+          <GetStarted navigation={navigation} />
+        )}
       </Animated.View>
     </View>
   );
