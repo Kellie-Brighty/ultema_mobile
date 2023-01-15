@@ -12,16 +12,18 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import GetStartedImg from "../assets/login_img.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
+import { GlobalContext } from "../store/context";
 
 const Login = () => {
   const mainColor = "#01532E";
   const [passwordHidden, setPasswordHidden] = useState(true);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const { setUser } = useContext(GlobalContext);
 
   const togglePassword = () => {
     setPasswordHidden((prevState) => !prevState);
@@ -98,6 +100,7 @@ const Login = () => {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
+                onPress={() => setUser(true)}
               >
                 <Text
                   style={{ fontSize: 16, color: "#fff", fontWeight: "400" }}
@@ -108,7 +111,7 @@ const Login = () => {
             </View>
 
             <View>
-              <Text style={styles.text_below} >
+              <Text style={styles.text_below}>
                 Get your login details from the admin to be able to inspect
               </Text>
             </View>
@@ -166,7 +169,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#767676",
     width: 300,
-    textAlign: 'center',
-    lineHeight: 20
-  }
+    textAlign: "center",
+    lineHeight: 20,
+  },
 });
