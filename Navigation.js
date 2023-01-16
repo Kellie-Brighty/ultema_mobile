@@ -8,6 +8,7 @@ import { useContext } from "react";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import { GlobalContext } from "./store/context";
+import AddNew from "./screens/AddNew";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,11 @@ export default function Navigation() {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddNew"
+          component={AddNew}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

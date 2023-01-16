@@ -16,7 +16,7 @@ import InspectionItems from "../components/InspectionItems";
 
 const mainColor = "#01532E";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const { inspections } = useContext(GlobalContext);
 
   return (
@@ -43,7 +43,7 @@ const Home = () => {
           )}
 
           <View>
-            <Footer />
+            <Footer navigation={navigation} />
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   active_items: {
     flex: 1,
-    padding: 20
+    padding: 20,
   },
   first_subtext: {
     fontSize: 24,
