@@ -9,12 +9,14 @@ import Home from "./screens/Home";
 import Login from "./screens/Login";
 import { GlobalContext } from "./store/context";
 import AddNew from "./screens/AddNew";
+import Photos from "./components/Add_photos/Photos";
+import Camera from "./components/Add_photos/Camera";
+import CameraScreen from "./components/Add_photos/Camera";
 
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
-
-  const {user, registered} = useContext(GlobalContext)
+  const { user, registered } = useContext(GlobalContext);
 
   const UserAuthenticatedStack = () => {
     return (
@@ -27,6 +29,16 @@ export default function Navigation() {
         <Stack.Screen
           name="AddNew"
           component={AddNew}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Photos"
+          component={Photos}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CameraScreen"
+          component={CameraScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
