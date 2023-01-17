@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import Footer from "../components/Footer";
 import Add_Icon from "../assets/add_icon.png";
@@ -10,10 +17,12 @@ const inspection_options = [
   {
     icon: Add_Icon,
     title: "Car Details",
+    route: "Home",
   },
   {
     icon: Add_Icon,
     title: "Photos",
+    route: "Photos",
   },
 ];
 
@@ -28,11 +37,15 @@ const AddNew = ({ navigation }) => {
       </View>
 
       <View style={styles.inspection_options_container}>
-        <View style={{ flexDirection: "row", justifyContent: 'space-between' }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           {inspection_options.map((item) => (
-            <TouchableOpacity key={item.title} style={styles.inspection_option}>
-              <Image style={styles.option_item}  source={item.icon} />
-              <Text style={styles.option_item} >{item.title}</Text>
+            <TouchableOpacity
+              key={item.title}
+              style={styles.inspection_option}
+              onPress={() => navigation.navigate(`${item.route}`)}
+            >
+              <Image style={styles.option_item} source={item.icon} />
+              <Text style={styles.option_item}>{item.title}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -71,7 +84,7 @@ const styles = StyleSheet.create({
   inspection_options_container: {
     flex: 1,
     paddingHorizontal: 16,
-    paddingTop: 24
+    paddingTop: 24,
   },
   inspection_option: {
     flexDirection: "row",
@@ -80,9 +93,9 @@ const styles = StyleSheet.create({
     borderColor: "rgba(53, 53, 53, 0.5)",
     padding: 20,
     borderRadius: 10,
-    width: 185
+    width: 185,
   },
   option_item: {
-    marginHorizontal: 12
-  }
+    marginHorizontal: 12,
+  },
 });
